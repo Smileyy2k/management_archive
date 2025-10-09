@@ -84,10 +84,7 @@ const allCourseData = {
 
 // Get current program from URL or default to MBA
 function getCurrentProgram() {
-    const path = window.location.pathname;
-    if (path.includes('bba.html')) return 'BBA';
-    if (path.includes('mba.html')) return 'MBA';
-    return 'MBA'; // default
+    return document.body.dataset.program;
 }
 
 // Create selector HTML
@@ -276,4 +273,5 @@ window.addEventListener('message', function(event) {
     } else if (event.data === 'light') {
         document.body.classList.remove('darkmode');
     }
+
 }, false);
