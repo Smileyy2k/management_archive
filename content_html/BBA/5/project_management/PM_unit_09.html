@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 9: Social Cost Benefit Analysis (SCBA) (Responsive)</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>UNIT 9: Social Cost Benefit Analysis (SCBA)</h1>
+
+    <h2>1. SOCIAL COST BENEFIT ANALYSIS (SCBA)</h2>
+    <p>SCBA is an economic evaluation technique used to appraise projects from the viewpoint of the **entire society or economy**, rather than solely from the perspective of the investing organization.</p>
+    <p>It involves systematically identifying, measuring, and valuing all costs and benefits—including those **external effects (externalities)** that do not appear in conventional financial accounts—to determine the **net contribution of the project to national welfare**.</p>
+
+    <h2>2. RATIONALE FOR SCBA</h2>
+    <p>SCBA is necessary because the **market prices** used in financial analysis are often **distorted** and do not reflect the true scarcity value or opportunity cost to society.</p>
+
+    <h3>Reasons for Market Price Distortion:</h3>
+    <ol>
+        <li>**Taxes and Subsidies:** Taxes (like GST) inflate prices, while subsidies deflate them, meaning neither reflects the actual economic cost of production.</li>
+        <li>**Externalities:** Projects create costs (like pollution, noise) or benefits (like improved infrastructure, reduced traffic congestion) for third parties that are not compensated or paid for.</li>
+        <li>**Market Imperfections:** Monopoly power, price controls, and unemployment (especially of unskilled labor) prevent market prices from reflecting true social opportunity costs.</li>
+    </ol>
+
+    <h2>3. SHADOW PRICING (ACCOUNTING PRICES)</h2>
+    <p>**Shadow Prices** (or Accounting Prices) are the true economic value of a good, service, or resource, adjusted to reflect its actual scarcity value or opportunity cost to the society, net of all market distortions.</p>
+    <ul>
+        <li>**Objective:** To replace distorted market prices with prices that truly reflect the social value and cost of resources.</li>
+        <li>**Application:** In SCBA, a shadow price is used for calculating the cost/benefit instead of the observed market price.</li>
+    </ul>
+
+    <h3>Shadow Pricing for Key Factors:</h3>
+    <ol>
+        <li>**Foreign Exchange:** The market exchange rate is often controlled or distorted. The shadow price of foreign exchange is its **true social cost**, reflecting the value of imports saved or exports generated.</li>
+        <li>**Labour:** Due to high unemployment, the **social opportunity cost** of unskilled labour (the lost output from alternative employment) is often **lower** than the market wage rate. Using a lower shadow price encourages employment-generating projects.</li>
+        <li>**Capital:** The social cost of capital (Social Discount Rate, SDR) is used instead of the market interest rate (which is distorted by taxes and risk), reflecting society's time preference for consumption.</li>
+    </ol>
+
+    <h2>4. UNIDO APPROACH TO SCBA (United Nations Industrial Development Organization)</h2>
+    <p>The UNIDO approach provides a five-step framework for project evaluation by systematically adjusting financial values to arrive at social values.</p>
+
+    <table class="data-table">
+        <tr><th>Stage</th><th>Focus of Analysis</th><th>Key Concept</th></tr>
+        <tr><td>**Stage 1: Financial Profitability (Market Prices)**</td><td>Calculate profitability from the commercial (firm’s) viewpoint.</td><td>Uses unadjusted market prices.</td></tr>
+        <tr><td>**Stage 2: Economic/SCBA Profitability (Shadow Prices)**</td><td>Recalculate profitability from the national (society's) viewpoint.</td><td>Replace all market prices with **Shadow Prices**.</td></tr>
+        <tr><td>**Stage 3: Adjustments for Externalities**</td><td>Identify and value all social costs (e.g., pollution, displacement) and social benefits (e.g., training, infrastructure) not included in financial accounts.</td><td>Quantify and value **Externalities**.</td></tr>
+        <tr><td>**Stage 4: Adjustments for Savings and Investment**</td><td>Account for the social value of funds, as society values a rupee invested more than a rupee consumed.</td><td>Determine the **Consumption vs. Investment** social weights.</td></tr>
+        <tr><td>**Stage 5: Adjustments for Income Distribution**</td><td>Examine how the project's benefits and costs are distributed across different income groups (e.g., rich vs. poor).</td><td>Apply **Distributional Weights** to favor benefits accruing to the poor.</td></tr>
+    </table>
+    <p>The final result is the **Net Social Benefit (NSB)**, which determines the project's worth to the nation.</p>
+
+    <h2>5. PUBLIC SECTOR INVESTMENT IN INDIA</h2>
+    <p>SCBA is most directly and crucially applied to **Public Sector Investment** in India. Public sector projects (like metro rail, dams, or public health initiatives) are typically undertaken not for profit maximization, but for the maximization of **social welfare**.</p>
+    <ul>
+        <li>**Justification of Public Projects:** Projects are justified based on their Net Social Benefit (NSB).</li>
+        <li>**Shadow Pricing for Labour:** The social cost of using unskilled labour is often valued lower than its market wage to incentivize projects that generate significant **employment**, making job creation a social benefit.</li>
+        <li>**Distributional Weights:** SCBA helps ensure that large infrastructure projects do not disproportionately burden the poor while benefiting the wealthy, thereby addressing social equity goals.</li>
+    </ul>
+
+</div>
+<script>
+        // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+        (function() {
+            try {
+                // Access parent's localStorage
+                const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+
+                // If parent is in dark mode, apply it here too
+                if (parentDarkmode === 'active') {
+                    document.body.classList.add('darkmode');
+                }
+            } catch (e) {
+                // Safety net in case we can't access parent
+                console.log('Could not access parent localStorage:', e);
+            }
+        })();
+        // Listen for theme messages from parent window
+        window.addEventListener('message', function(event) {
+            // Security check: verify the message is from the same origin
+            if (event.origin !== window.location.origin) return;
+
+            // Apply the theme based on the message
+            if (event.data === 'dark') {
+                document.body.classList.add('darkmode');
+            } else if (event.data === 'light') {
+                document.body.classList.remove('darkmode');
+            }
+        }, false);
+    </script>
+    <script>
+    // Add this function
+    function adjustIframeHeight() {
+        const contentHeight = document.querySelector('.container').offsetHeight;
+        window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+    }
+
+    // Call it after DOM loads and after theme changes
+    document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+    window.addEventListener('resize', adjustIframeHeight);
+</script>
+</body>
+</html>

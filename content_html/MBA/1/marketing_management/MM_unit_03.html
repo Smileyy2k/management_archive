@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 3: Marketing Environment</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 3: MARKETING ENVIRONMENT</h1>
+    <p>The performance of a company depends on its marketing environment, which influences its marketing activities and, ultimately, its sales. The demand for a product is affected by the environment in which the organization functions, as this environment shapes customer needs and wants.</p>
+    <div class="format-example">
+            </div>
+
+    <div class="topic">
+        <h2>1. COMPETITIVE FORCES</h2>
+        <p>Competition has a significant impact on the marketing environment. The level of competition depends on the structure of an industry.</p>
+        
+        <h4>Types of Competitive Structures</h4>
+        <ul>
+            <li><strong>Pure Competition:</strong> A market with a large number of firms selling identical products. No single firm can influence the market price; every firm is a price taker (e.g., agricultural products like wheat).</li>
+            <li><strong>Monopolistic Competition:</strong> Features many firms selling differentiated products. Firms have some limited control over their prices and compete heavily on branding and advertising (e.g., restaurants, clothing stores).</li>
+            <li><strong>Oligopoly:</strong> A market dominated by a small number of large firms that are highly interdependent. The actions of one firm directly affect the others (e.g., airline and automobile industries).</li>
+            <li><strong>Monopoly:</strong> A market with a single seller who has complete control over the market for a particular good with no close substitutes (e.g., utility companies providing water or electricity).</li>
+        </ul>
+    </div>
+
+    <div class="topic">
+        <h2>2. MACRO ENVIRONMENTAL FACTORS</h2>
+        <p>Macro-environmental factors are large-scale, external forces that affect a business's operations. They are often analyzed using frameworks like PESTLE (Political, Economic, Socio-cultural, Technological, Legal, Environmental).</p>
+        
+        <ul>
+            <li><strong>Demographic Environment:</strong> The study of human populations in terms of size, density, age, gender, occupation, etc. Changes in these characteristics can create new markets.</li>
+            <li><strong>Political Environment:</strong> Government policies, laws, and political stability that regulate a business's operations.</li>
+            <li><strong>Economic Environment:</strong> Broad economic conditions like GDP trends, inflation, and unemployment that influence consumer spending and business costs.</li>
+            <li><strong>Socio-Cultural Environment:</strong> Societal forces that affect a population's basic values, preferences, and behaviors (e.g., the increasing focus on health and wellness).</li>
+            <li><strong>Technology Environment:</strong> Advancements in technology that create new products and market opportunities, and can disrupt existing industries.</li>
+            <li><strong>Natural Environment:</strong> Physical resources and conditions like raw materials availability and climate change that affect businesses.</li>
+            <li><strong>Legal Environment:</strong> Laws, government agencies, and pressure groups that influence and restrict organizations, including consumer protection laws.</li>
+        </ul>
+    </div>
+    
+    <div class="topic">
+        <h2>3. PORTER'S FIVE FORCE MODEL</h2>
+        <p>Porter's Five Forces Model is a framework for analyzing the competitive intensity and profitability of an industry. It identifies five key forces that shape competition.</p>
+        <ol>
+            <li><strong>Threat of New Entrants:</strong> This assesses how easy or difficult it is for new companies to enter an industry. High barriers to entry (e.g., high capital requirements, strong brand loyalty) protect existing firms.</li>
+            <li><strong>Bargaining Power of Suppliers:</strong> This measures the power suppliers have to increase prices. A supplier group is powerful if it is concentrated or its product is unique.</li>
+            <li><strong>Bargaining Power of Buyers:</strong> This assesses the power customers have to drive down prices. Buyers have more power when they purchase large volumes or have many substitute options.</li>
+            <li><strong>Threat of Substitute Products or Services:</strong> A substitute is a different product that can satisfy the same customer need. The threat is high if the substitute offers a good price-performance trade-off.</li>
+            <li><strong>Rivalry Among Existing Competitors:</strong> This central force evaluates the intensity of competition between firms already in the industry. Rivalry is fierce when there are many competitors of similar size and slow industry growth.</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

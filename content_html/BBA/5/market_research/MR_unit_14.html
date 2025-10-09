@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 14: Bivariate Measures of Association</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 14: BIVARIATE MEASURES OF ASSOCIATION</h1>
+
+    <div class="topic">
+        <h2>1. INTRODUCTION</h2>
+        <p>This unit explores techniques used to examine the relationship between two variables (bivariate analysis) simultaneously. Understanding these relationships is critical for making predictive and causal claims in market research.</p>
+        <p><strong>Bivariate Measures of Association</strong> are statistical techniques used to summarize the strength and nature of the relationship between two variables. We want to see if one thing changes when another thing changes. For example: Does a customer's Gender relate to their Loyalty Card Usage?</p>
+    </div>
+
+    <div class="topic">
+        <h2>2. CROSS TABULATIONS</h2>
+        <p><strong>Cross Tabulation</strong> (or contingency table) is a statistical technique used to simultaneously analyze two categorical variables (Nominal or Ordinal data). The results are presented in a matrix format, showing the frequency distribution of one variable within each category of the other. It's like sorting your data into a simple table to see if groups differ.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>We use cross-tabs to see if Loyalty Card Ownership (Yes/No) differs by Gender (Male/Female).</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Owns Loyalty Card (Yes)</th>
+                        <th>Does Not Own Card (No)</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Male</strong></td>
+                        <td>50</td>
+                        <td>70</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Female</strong></td>
+                        <td>80</td>
+                        <td>30</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td>130</td>
+                        <td>100</td>
+                        <td>230</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Observation:</strong> Females appear more likely to own a loyalty card than males. The Chi-Square test would confirm if this observed difference is statistically significant.</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>3. SCATTER DIAGRAMS</h2>
+        <p>A <strong>Scatter Diagram</strong> (or Scatter Plot) is a graphical representation of the relationship between two continuous variables (Interval or Ratio data). Each point on the graph represents a single observation, plotted on an X and Y axis. It's the simplest way to visually check for correlation.</p>
+        <div class="example">
+             <h4>Coffee Shop Example:</h4>
+             <p>We plot Customer Age (X-axis) against Average Weekly Spend (Y-axis). If the dots rise from left to right, there's a positive relationship. If the dots are randomly spread, there's no relationship.</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>4. REGRESSION ANALYSIS</h2>
+        <p><strong>Regression Analysis</strong> is a powerful statistical technique used to analyze the linear relationship between a dependent variable (the one to be predicted, Y) and one or more independent variables (the predictors, X). It gives you a mathematical equation that allows you to answer the question: "If we change X by one unit, what specific change can we expect in Y?"</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>We want to predict Customer Visit Frequency (Y) using the Customer Satisfaction Score (X).</p>
+            <p><strong>Result:</strong> If the resulting equation is $Y = 0.5 + 0.8X$, the slope (b=0.8) means that for every 1-point increase in Satisfaction Score (X), we predict a 0.8 increase in Weekly Visit Frequency (Y).</p>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>5. CORRELATION ANALYSIS</h2>
+        <p><strong>Correlation Analysis</strong> measures the degree to which two continuous variables vary together. The result is the Coefficient of Correlation (r), which ranges from -1.0 (perfect negative) to +1.0 (perfect positive). Correlation tells you the strength and direction of the relationship, but it does <strong>not</strong> imply causation or give a prediction formula.</p>
+        <div class="highlight-box">
+            <p><strong>Key Difference from Regression:</strong> Correlation just confirms a strong relationship exists (e.g., r = 0.9). Regression determines the best way to use that relationship for prediction (e.g., $Y = 10 + 5X$).</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>6. LINEAR DISCRIMINANT ANALYSIS (LDA)</h2>
+        <p><strong>Linear Discriminant Analysis (LDA)</strong> is a technique whose primary objective is to determine combinations of independent variables that best differentiate between groups defined by a categorical dependent variable. It helps classify customers into groups based on their measured characteristics by creating a weighted equation to determine if a customer belongs to Group 1 (High Loyalty) or Group 2 (Low Loyalty).</p>
+    </div>
+
+    <div class="topic">
+        <h2>7. AUTOMATIC INTERACTION DETECTOR (AID)</h2>
+        <p>The <strong>Automatic Interaction Detector (AID)</strong> is a data analysis technique used to sequentially partition a sample into a series of subgroups that are maximally different with respect to the mean of a dependent variable. It creates an easy-to-understand tree structure by repeatedly asking, "Which factor creates the biggest difference in the average target outcome?"</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>The goal is Average Monthly Spend. AID might first find the most significant difference is based on Age (≤30 vs. >30). It then examines the "Age ≤30" group and finds the next best split is based on Visit Frequency. This segmentation structure instantly tells the marketing team which combinations of factors define the highest-spending and lowest-spending customer groups.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

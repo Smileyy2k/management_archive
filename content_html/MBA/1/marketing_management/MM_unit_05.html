@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 5: Understanding Consumer Buying Behavior</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 5: UNDERSTANDING CONSUMER BUYING BEHAVIOR</h1>
+
+    <div class="topic">
+        <h2>1. CONSUMER BEHAVIOR</h2>
+        <p><strong>Consumer behavior</strong> is the study of how individuals, groups, or organizations make decisions to select, purchase, use, and dispose of goods, services, ideas, or experiences to satisfy their needs and wants. Understanding it helps marketers develop effective strategies.</p>
+    </div>
+
+    <div class="topic">
+        <h2>2. FACTORS INFLUENCING CONSUMER BUYING BEHAVIOR</h2>
+        <p>Consumer behavior is influenced by a complex mix of cultural, social, personal, and psychological factors.</p>
+        
+        <div class="subsection">
+            <h3>1. Cultural Factors</h3>
+            <p>These are the most fundamental influences on a person's wants and behavior.</p>
+            <ul>
+                <li><strong>Culture:</strong> The set of values, perceptions, and behaviors learned from family and key institutions.</li>
+                <li><strong>Subculture:</strong> A group within a culture that shares common experiences and value systems (e.g., based on nationality, religion, or region).</li>
+                <li><strong>Social Class:</strong> A relatively permanent division in society whose members share similar values, interests, and behaviors, determined by occupation, income, and education.</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h3>2. Social Factors</h3>
+            <p>These influences come from a person's interactions with others.</p>
+             <ul>
+                <li><strong>Reference Groups:</strong> A social group an individual uses for comparison. This includes primary groups (family, friends), secondary groups (professional associations), aspiration groups (groups one wishes to join), and avoidance groups.</li>
+                <li><strong>Family:</strong> The most important consumer-buying organization in society.</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h3>3. Personal Factors</h3>
+            <p>These are individual characteristics that influence buying decisions.</p>
+            <ul>
+                <li><strong>Age and Lifecycle Stage:</strong> A person's tastes and preferences change with their age and family life cycle.</li>
+                <li><strong>Occupation and Financial Status:</strong> A person's job and income directly affect their purchasing power.</li>
+                <li><strong>Lifestyle:</strong> A person's pattern of living as expressed in their activities, interests, and opinions.</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h3>4. Psychological Factors</h3>
+            <p>These are internal mental processes that influence behavior.</p>
+            <ul>
+                <li><strong>Motivation:</strong> The driving force that prompts a person to satisfy a need.</li>
+                <li><strong>Perceptions:</strong> The process by which people select, organize, and interpret information.</li>
+                <li><strong>Beliefs and Attitudes:</strong> A belief is a descriptive thought about something; an attitude is a person's consistently favorable or unfavorable evaluation of an object or idea.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>3. BUYING DECISION</h2>
+        
+        <div class="subsection">
+            <h3>1. Buying Roles</h3>
+            <p>In many purchases, multiple people are involved, each taking on a different role:</p>
+            <ul>
+                <li><strong>Initiator:</strong> The person who first suggests buying the product.</li>
+                <li><strong>Influencer:</strong> The person whose views influence the decision.</li>
+                <li><strong>Decider:</strong> The person who ultimately determines any part of the buying decision.</li>
+                <li><strong>Buyer:</strong> The person who makes the actual purchase.</li>
+                <li><strong>User:</strong> The person who consumes or uses the product.</li>
+            </ul>
+        </div>
+        
+        <div class="subsection">
+            <h3>2. Buying Behavior</h3>
+            <p>This refers to the different levels of effort consumers put into their purchasing decisions.</p>
+             <ul>
+                <li><strong>Extensive Problem Solving:</strong> Occurs when buying an expensive, high-risk product, involving significant time and effort. (e.g., buying a car).</li>
+                <li><strong>Routinized Buying Behavior:</strong> Applies to low-cost, frequently purchased items where the process is quick and habitual. (e.g., buying toothpaste).</li>
+                <li><strong>Variety Seeking Behavior:</strong> Characterized by low consumer involvement but significant perceived brand differences, leading to brand switching out of boredom. (e.g., trying a different brand of biscuits).</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>4. BUYING DECISION PROCESS</h2>
+        <p>This is the journey a consumer takes from identifying a need to making a purchase and evaluating the outcome. It generally consists of five stages:</p>
+        <ol class="process-step">
+            <li><strong>Problem Recognition:</strong> The process begins when a consumer recognizes a need or problem.</li>
+            <li><strong>Information Search:</strong> The consumer looks for information from personal sources (family, friends), commercial sources (ads), public sources (reviews), and experiential sources (handling the product).</li>
+            <li><strong>Evaluation of Alternatives:</strong> The consumer uses the gathered information to evaluate different brands in their consideration set based on important attributes like price, quality, and features.</li>
+            <li><strong>Purchase Decision:</strong> The consumer decides which product to purchase, including the brand, store, and timing.</li>
+            <li><strong>Post-Purchase Behavior:</strong> The consumer's experience after the purchase is crucial. This leads to either <strong>post-purchase satisfaction</strong> or <strong>post-purchase dissonance</strong> (buyer's remorse) and influences future buying behavior.</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

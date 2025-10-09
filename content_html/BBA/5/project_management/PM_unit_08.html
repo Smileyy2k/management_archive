@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 8: Environmental Appraisal of Projects (Responsive)</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>UNIT 8: Environmental Appraisal of Projects</h1>
+
+    <h2>1. MEANING OF ENVIRONMENT AND POLLUTION</h2>
+
+    <h3>A. Environment</h3>
+    <p>The environment refers to the **sum total of all biotic (living) and abiotic (non-living) factors** that surround an organism or a population and influence their survival. In a project context, it includes the natural resources (air, water, land, flora, fauna) and the socio-economic context affected by the project.</p>
+
+    <h3>B. Pollution</h3>
+    <p>Pollution is the introduction of **contaminants** into the natural environment that cause **adverse change**. It results from undesirable alterations in the physical, chemical, or biological characteristics of air, water, and soil.</p>
+
+    <h2>2. POLLUTION CREATED BY DIFFERENT INDUSTRIES</h2>
+    <p>The nature and severity of pollution depend heavily on the industrial sector.</p>
+    <table class="data-table">
+        <tr><th>Industry Sector</th><th>Primary Pollutants</th><th>Affected Media</th></tr>
+        <tr><td>**Manufacturing/Heavy Industry** (Steel, Cement, Chemical)</td><td>Sulfur Dioxide ($\text{SO}_2$), Nitrogen Oxides ($\text{NOx}$), Particulate Matter, heavy metals, toxic chemical effluent.</td><td>Air (acid rain, smog), Water (surface and groundwater contamination), Land (toxic sludge).</td></tr>
+        <tr><td>**Power Generation** (Thermal)</td><td>Carbon Dioxide ($\text{CO}_2$), Fly ash, Heat (thermal pollution).</td><td>Air (greenhouse gases), Water (effluent and heat discharge).</td></tr>
+        <tr><td>**Infrastructure/Construction**</td><td>Dust, Noise, Construction debris, Erosion runoff.</td><td>Air (dust), Land (aesthetic degradation, sedimentation), Socio-Economic (noise).</td></tr>
+        <tr><td>**Agriculture/Food Processing**</td><td>Pesticides, Fertilizers (nitrates, phosphates), Organic waste.</td><td>Water (eutrophication), Land (soil degradation).</td></tr>
+    </table>
+
+    <h2>3. ENVIRONMENTAL APPRAISAL</h2>
+    <p>Environmental appraisal is the process of evaluating a project's potential impact on the surrounding environment and recommending measures to mitigate negative effects and enhance positive ones.</p>
+
+    <h3>Need for Environmental Appraisal</h3>
+    <ol>
+        <li>**Statutory Compliance:** Many projects require mandatory Environmental Clearance (EC) from government bodies (e.g., MoEFCC in India).</li>
+        <li>**Risk Management:** Unforeseen environmental damage can lead to fines, project delays, or shutdown.</li>
+        <li>**Resource Efficiency:** Appraisal promotes the use of cleaner technology and efficient resource utilization (water, energy).</li>
+        <li>**Stakeholder Acceptance:** Ensures public acceptance and social license to operate by addressing local concerns.</li>
+    </ol>
+
+    <h2>4. ENVIRONMENTAL IMPACT ASSESSMENT (EIA)</h2>
+    <p>EIA is a formal process for predicting and evaluating the environmental consequences of a proposed development project and suggesting remedial actions prior to decision-making.</p>
+
+    <h3>EIA Process Steps</h3>
+    <table class="data-table">
+        <tr><th>Step</th><th>Action</th><th>Goal</th></tr>
+        <tr><td>**Screening**</td><td>Determining if a project requires a full EIA based on its size, location, and potential impact.</td><td>To filter out projects with negligible impact.</td></tr>
+        <tr><td>**Scoping**</td><td>Identifying the key environmental issues and impacts that need to be studied in the EIA.</td><td>To establish the boundaries and focus of the EIA study.</td></tr>
+        <tr><td>**Baseline Data Collection**</td><td>Collecting existing information on the current environmental state (air quality, biodiversity) of the project site.</td><td>To establish a reference point against which the project's future impact can be measured.</td></tr>
+        <tr><td>**Impact Prediction & Assessment**</td><td>Forecasting the likely negative and positive effects of the project during construction and operation.</td><td>To quantify the magnitude and likelihood of each impact.</td></tr>
+        <tr><td>**Mitigation Measures**</td><td>Recommending specific actions, technologies, or design changes to prevent, reduce, or offset adverse environmental impacts.</td><td>To minimize harm and ensure project viability.</td></tr>
+        <tr><td>**EIA Report Preparation**</td><td>Documenting all findings, predictions, and recommended mitigation measures.</td><td>To provide comprehensive information for decision-makers.</td></tr>
+        <tr><td>**Public Hearing**</td><td>Consulting with the public and stakeholders who may be affected by the project to capture their concerns (a mandatory requirement for certain projects).</td><td>To ensure transparency and public participation.</td></tr>
+        <tr><td>**Decision Making**</td><td>The regulatory authority (MoEFCC/SEIAA) reviews the EIA report and public concerns to grant or deny the Environmental Clearance (EC).</td><td>To determine if the project is environmentally acceptable.</td></tr>
+    </table>
+
+</div>
+<script>
+        // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+        (function() {
+            try {
+                // Access parent's localStorage
+                const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+
+                // If parent is in dark mode, apply it here too
+                if (parentDarkmode === 'active') {
+                    document.body.classList.add('darkmode');
+                }
+            } catch (e) {
+                // Safety net in case we can't access parent
+                console.log('Could not access parent localStorage:', e);
+            }
+        })();
+        // Listen for theme messages from parent window
+        window.addEventListener('message', function(event) {
+            // Security check: verify the message is from the same origin
+            if (event.origin !== window.location.origin) return;
+
+            // Apply the theme based on the message
+            if (event.data === 'dark') {
+                document.body.classList.add('darkmode');
+            } else if (event.data === 'light') {
+                document.body.classList.remove('darkmode');
+            }
+        }, false);
+    </script>
+    <script>
+    // Add this function
+    function adjustIframeHeight() {
+        const contentHeight = document.querySelector('.container').offsetHeight;
+        window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+    }
+
+    // Call it after DOM loads and after theme changes
+    document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+    window.addEventListener('resize', adjustIframeHeight);
+</script>
+</body>
+</html>

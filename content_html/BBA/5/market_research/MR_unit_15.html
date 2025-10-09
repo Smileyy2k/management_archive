@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 15: Multivariate Measures of Association</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 15: MULTIVARIATE MEASURES OF ASSOCIATION</h1>
+
+    <div class="topic">
+        <h2>1. INTRODUCTION</h2>
+        <p><strong>Multivariate Measures of Association</strong> (or Multivariate Analysis) refers to a collection of statistical techniques used to analyze data involving multiple variables. This analysis either determines how several independent variables collectively influence a dependent variable (dependence techniques) or summarizes the structure of relationships among a set of variables (interdependence techniques).</p>
+        <p>MVA moves beyond simple two-variable relationships. We stop looking at how just one factor affects an outcome and look at how many factors simultaneously (Age, Income, Location, Satisfaction) combine to influence our data.</p>
+    </div>
+
+    <div class="topic">
+        <h2>2. MULTIPLE REGRESSION</h2>
+        <p><strong>Multiple Regression</strong> is an extension of simple regression used to predict the value of a single dependent variable based on the combined linear effect of two or more independent variables. This is used to get a much more accurate prediction than simple regression. It tells us the unique impact of each predictor while controlling for the others.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>Predicting Total Monthly Spend (Y) using Satisfaction Score (X1), Distance to Store (X2), and Income (X3). The result might show that Satisfaction is the strongest predictor, but Distance is still significant.</p>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>3. LISREL (STRUCTURAL EQUATION MODELING - SEM)</h2>
+        <p><strong>LISREL</strong> is the original name for a technique now commonly called <strong>Structural Equation Modeling (SEM)</strong>. SEM is a sophisticated methodology that allows the testing of complex, hypothesized causal relationships between multiple variables, including both observed variables (data you can directly measure) and unobserved/latent variables (theoretical concepts like 'intelligence' or 'motivation').</p>
+        <p>SEM is for testing complex theories or models. It tests the entire chain of cause and effect simultaneously.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>We hypothesize a chain: (Staff Friendliness → Service Quality) → (Satisfaction) → (Loyalty Intention). SEM tests if the data collected supports this entire theoretical model, showing the strength of each link in the chain.</p>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>4. CONJOINT ANALYSIS</h2>
+        <p><strong>Conjoint Analysis</strong> is a dependence technique used to determine the relative importance consumers attach to various product attributes (features) and the utility (value) they derive from each level of those attributes. This technique figures out what customers really value by forcing them to make trade-offs between specific features and price points. By analyzing their choices, we can mathematically calculate the hidden value they place on each feature.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>To design a new loyalty app, we test scenarios mixing: 1. Price ($5/month vs. $10/month), 2. Reward (Free coffee vs. 50% off), and 3. Access (VIP seating vs. Standard). Conjoint will reveal if customers value the Free Coffee reward more than the lower Price.</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>5. FACTOR ANALYSIS</h2>
+        <p><strong>Factor Analysis</strong> is an interdependence technique used for data reduction and summarization. It groups a large set of interrelated variables into a smaller, manageable set of underlying, unobserved dimensions called <strong>factors</strong> that account for most of the variation in the original data.</p>
+        <p>Factor analysis helps simplify messy data. If you have 30 survey questions asking similar things, it mathematically compresses them into just a few core themes.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>We use 10 separate questions to measure store atmosphere. Factor Analysis might combine these into two meaningful factors: 1. Sensory Atmosphere (music, lighting) and 2. Physical Comfort (seating, temperature).</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>6. CLUSTER ANALYSIS</h2>
+        <p><strong>Cluster Analysis</strong> is an interdependence technique used to classify objects (e.g., respondents, products) into a number of relatively homogeneous (similar) groups called <strong>clusters</strong>. The goal is to maximize the similarity of objects within each cluster while maximizing the dissimilarity between clusters.</p>
+        <p>This technique is the core method for market segmentation. It lets the data group customers automatically based on how similar they are across all variables.</p>
+         <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>Cluster Analysis, using variables like Age, Visit Frequency, and Spend, might identify three segments:</p>
+            <ul>
+                <li><strong>Cluster 1 (The Daily Commuter):</strong> High Visit Frequency, Medium Spend, Medium Age.</li>
+                <li><strong>Cluster 2 (The Weekend Socializer):</strong> Low Visit Frequency, High Spend, Younger Age.</li>
+                <li><strong>Cluster 3 (The Budget Buyer):</strong> High Visit Frequency, Low Spend, Older Age.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

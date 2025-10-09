@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 16: Analysis of Variance (ANOVA)</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 16: ANALYSIS OF VARIANCE (ANOVA)</h1>
+
+    <div class="topic">
+        <h2>1. INTRODUCTION</h2>
+        <p><strong>Analysis of Variance (ANOVA)</strong> is a statistical method for testing the equality of three or more population means by partitioning the total variation in a dependent variable into components attributable to different sources of variation.</p>
+        <p>ANOVA is essentially an advanced t-test. If you have just two groups (like Male vs. Female), you use a t-test. If you have three or more groups (like Promotion A, Promotion B, and No Promotion), you must use ANOVA to see if any of those groups have a significantly different average outcome.</p>
+        <ul>
+            <li><strong>Null Hypothesis (H0):</strong> All population means are equal (µ1 = µ2 = µ3).</li>
+            <li><strong>Alternative Hypothesis (H1):</strong> At least one pair of means is significantly different.</li>
+        </ul>
+    </div>
+
+    <div class="topic">
+        <h2>2. UNIVARIATE ANOVA (ONE-WAY ANOVA)</h2>
+        <p><strong>Univariate ANOVA</strong> (or One-Way ANOVA) involves a single categorical independent variable (called the <strong>factor</strong>) with three or more levels (groups) and a single continuous dependent variable. It's the simplest form of ANOVA.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>We want to test the effectiveness of three different promotional offers on customer spending.</p>
+            <ul>
+                <li><strong>Factor (Independent Variable):</strong> Type of Promotion (3 levels: 10% off, Free Dessert, Buy-One-Get-One).</li>
+                <li><strong>Dependent Variable:</strong> Average dollars spent per visit.</li>
+                <li><strong>Goal:</strong> Determine if the average spend across the three promotion groups is significantly different.</li>
+            </ul>
+             <div class="info-box">
+                <p>If the ANOVA is significant, a <strong>Post-Hoc Test</strong> (like Tukey's HSD) is needed to find which specific pairs differ (e.g., 10% off vs. Free Dessert).</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>3. MULTIVARIATE ANOVA (MANOVA)</h2>
+        <p><strong>Multivariate ANOVA (MANOVA)</strong> is an extension of ANOVA used when there are multiple continuous dependent variables to be analyzed simultaneously. If you want to see if your promotions worked on both spending and satisfaction at the same time, you use MANOVA.</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <p>We test the same three promotions (the Factor).</p>
+            <ul>
+                <li><strong>Dependent Variables (Multiple):</strong> 1. Average dollars spent per visit, AND 2. Customer Satisfaction Score (1-7 scale).</li>
+            </ul>
+            <p><strong>Benefit:</strong> MANOVA is more powerful than running two separate ANOVAs because it accounts for the correlation between the two dependent variables.</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>4. ANOVA FOR RANDOMIZED BLOCKS</h2>
+        <p>This design is a specialized form of ANOVA used when the researcher wants to statistically control for the effects of an extraneous variable that could otherwise distort the results. If you know a factor, like age, strongly affects the outcome, you don't want it to hide the true effect of your treatment. You divide participants into "blocks" (e.g., "Young," "Middle-Aged," "Senior") and then apply all treatments within each block to isolate the treatment effect.</p>
+    </div>
+    
+    <div class="topic">
+        <h2>5. ANOVA FOR LATIN SQUARE DESIGN</h2>
+        <p>The <strong>Latin Square Design</strong> is an experimental design used to control for two non-interacting extraneous variables (blocks) in addition to the primary experimental factor. This is used in complex experiments when you have two outside factors that could mess up the results. The design ensures that each promotion appears exactly once in each row and each column, efficiently separating the effects.</p>
+    </div>
+    
+    <div class="topic">
+        <h2>6. ANOVA WITH INTERACTION (FACTORIAL DESIGN)</h2>
+        <p>In a <strong>Factorial Design</strong>, two or more factors are analyzed simultaneously. <strong>Interaction</strong> occurs when the effect of one factor on the dependent variable is dependent on the level of a second factor. We don't just ask, "Does Promotion A work?" We ask, "Does Promotion A work BETTER than others, but ONLY if the store has the new modern design?"</p>
+        <div class="example">
+            <h4>Coffee Shop Example:</h4>
+            <ul>
+                <li><strong>Factor 1:</strong> Promotion (Levels: 10% off vs. Free Dessert).</li>
+                <li><strong>Factor 2:</strong> Store Design (Levels: Classic vs. Modern).</li>
+            </ul>
+            <p><strong>Result:</strong> We might find the 10% off promotion works best in Modern Design stores, while Free Dessert works best in Classic Design stores. This is a significant interaction.</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>7. FACTORIAL DESIGN</h2>
+        <p>A <strong>Factorial Design</strong> is an experimental structure required to test for interactions. It includes two or more factors in a single experiment, crossing all levels of the factors to test every possible combination of treatments.</p>
+        <div class="example">
+            <h4>Coffee Shop Example (2x2 Factorial Design):</h4>
+            <ul>
+                <li><strong>Factor A:</strong> New Menu Item (Yes/No)</li>
+                <li><strong>Factor B:</strong> New Staff Uniforms (Yes/No)</li>
+            </ul>
+            <p><strong>Four Treatments Tested:</strong> (Menu ON / Uniforms ON), (Menu ON / Uniforms OFF), (Menu OFF / Uniforms ON), (Menu OFF / Uniforms OFF).</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>8. ANALYSIS OF COVARIANCE (ANCOVA)</h2>
+        <p><strong>Analysis of Covariance (ANCOVA)</strong> is an extension of ANOVA that includes at least one <strong>covariate</strong> (a continuous extraneous variable) in the analysis. ANCOVA statistically adjusts the means of the dependent variable to account for the effect of the covariate, thereby increasing the power of the test. It is similar to Randomized Blocks, but uses a continuous variable (like Pre-Test Spend) instead of a categorical one for blocking.</p>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

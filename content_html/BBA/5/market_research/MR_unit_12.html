@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 12: Preparation and Tabulation of Data</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 12: PREPARATION AND TABULATION OF DATA</h1>
+    <p>This unit covers the essential steps taken after data collection (fieldwork) and before statistical analysis. The goal of data preparation is to ensure the raw data is accurate, consistent, and organized for analysis.</p>
+
+    <div class="topic">
+        <h2>1. DATA PREPARATION PROCESS</h2>
+        <p>Data preparation is a crucial sequence of steps that transforms raw survey responses into a structured data matrix ready for statistical processing.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Focus</th>
+                    <th>Goal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Questionnaire Checking</strong></td>
+                    <td>Initial review of forms.</td>
+                    <td>Ensure forms are complete and usable.</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Editing</strong></td>
+                    <td>Correction of errors/omissions.</td>
+                    <td>Maximize accuracy and consistency.</td>
+                </tr>
+                <tr>
+                    <td><strong>Coding</strong></td>
+                    <td>Assigning numerical values.</td>
+                    <td>Convert responses into computer-readable codes.</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Entry</strong></td>
+                    <td>Inputting coded data.</td>
+                    <td>Create a standardized digital file (database).</td>
+                </tr>
+                <tr>
+                    <td><strong>Data Cleaning</strong></td>
+                    <td>Final consistency checks.</td>
+                    <td>Identify and treat missing responses, outliers, and errors.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="topic">
+        <h2>2. QUESTIONNAIRE CHECKING</h2>
+        <p>The initial screening of completed questionnaires to identify those that are unusable or contain critical errors. This is the first quality control step: tossing out surveys that are half-empty, illegible, or obviously filled out incorrectly. Questionnaires are typically checked for:</p>
+        <ol>
+            <li><strong>Completeness:</strong> Were all relevant sections filled out?</li>
+            <li><strong>Legibility:</strong> Are the answers clear and readable?</li>
+            <li><strong>Consistency:</strong> Do the answers make logical sense?</li>
+        </ol>
+    </div>
+
+    <div class="topic">
+        <h2>3. DATA EDITING</h2>
+        <p>Data editing is the process of reviewing data to ensure that it is accurate, consistent, and comparable. This is the correction phase. If a response is missing or unclear, the editor must decide whether to:</p>
+        <ul>
+            <li>Return the questionnaire to the field to re-contact the respondent.</li>
+            <li>Assign the missing value based on the average answer of other respondents (imputation).</li>
+            <li>Disregard the case entirely.</li>
+        </ul>
+    </div>
+
+    <div class="topic">
+        <h2>4. VARIABLE DEVELOPMENT</h2>
+        <p><strong>Variable development</strong> (or re-coding) involves creating new variables by mathematically combining, transforming, or aggregating existing ones. This is done to capture a complex marketing concept not measured by a single question. Instead of analyzing 10 separate questions, you combine them into one new, more powerful score.</p>
+        <div class="example">
+            <p><strong>Example:</strong> Creating a "High Loyalty" variable by combining respondents who scored high on "Satisfaction" AND answered 'Very Likely' to "Repurchase Intention."</p>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>5. CODING</h2>
+        <p><strong>Coding</strong> is the assignment of a code, usually a number, to represent a specific response to a question. A computer can't process the word "Disappointed," so coding turns that word into a number so software can perform statistics on it.</p>
+        <ul>
+            <li><strong>Coding Structured Questions (Closed-ended):</strong> Usually simple (e.g., Gender: 1=Male, 2=Female).</li>
+            <li><strong>Coding Unstructured Questions (Open-ended):</strong> Requires establishing a code book by reviewing a sample of answers and grouping them into categories (e.g., 10=Price, 11=Quality, 12=Customer Service).</li>
+        </ul>
+    </div>
+    
+    <div class="topic">
+        <h2>6. CATEGORIZATION</h2>
+        <p><strong>Categorization</strong> involves grouping or binning responses or scale values into a smaller number of distinct categories for simpler analysis. This is often applied to ratio or interval data, like taking a precise measure like Age (22, 23, 24...) and grouping it into broader Age Groups (18-24, 25-34) to make it easier to present findings.</p>
+    </div>
+    
+    <div class="topic">
+        <h2>7. DATA ENTRY</h2>
+        <p>The mechanical process of transferring the coded data from questionnaires into a computer file (like SPSS, R, or Excel). The most important part is the final check (Data Cleaning) to find and fix typos or impossible numbers before analysis starts.</p>
+        <div class="subsection">
+            <h3>Data Cleaning</h3>
+            <p>This is the essential final check immediately following data entry. It involves two main checks:</p>
+            <ol>
+                <li><strong>Consistency Check:</strong> Identifying data that is logically inconsistent (e.g., a respondent aged 100 claiming to have 10 children under age 5).</li>
+                <li><strong>Handling Missing Values:</strong> Determining the best way to deal with blanks (e.g., using a mean replacement, or marking it as '99' to signify 'missing').</li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>8. DATA MINING</h2>
+        <p><strong>Data Mining</strong> is the use of sophisticated analytical tools (like machine learning and predictive modeling) to discover valid, novel, and understandable patterns in large, existing databases. This is advanced, automated pattern recognition used to find hidden relationships in massive amounts of existing data, such as finding which customer traits reliably predict product churn.</p>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

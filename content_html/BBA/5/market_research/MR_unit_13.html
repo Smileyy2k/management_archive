@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 13: Tests of Significance</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 13: TESTS OF SIGNIFICANCE</h1>
+
+    <div class="topic">
+        <h2>1. INTRODUCTION</h2>
+        <p>This unit focuses on <strong>Inferential Statistics</strong>—the techniques used to draw conclusions about a large population based on data collected from a small sample. This is done primarily through <strong>Hypothesis Testing</strong>.</p>
+        <p>A <strong>hypothesis</strong> is an unproven statement about a phenomenon the researcher is interested in. Hypothesis Testing is a statistical procedure used to determine whether there is enough evidence in a sample to support a belief about the entire population. We start with an assumption and use statistics to see if the data proves that assumption is true, or if any change was just due to random chance.</p>
+        
+        <div class="subsection">
+            <h3>Key Concepts</h3>
+            <ul>
+                <li><strong>Null Hypothesis (H0):</strong> A statement of no difference or no effect. The researcher always attempts to reject it. (e.g., H0: There is no difference in sales between cities A and B.)</li>
+                <li><strong>Alternative Hypothesis (H1):</strong> A statement that reflects the researcher's belief that some difference or effect exists. (e.g., H1: Sales in city A are higher than in city B.)</li>
+                <li><strong>Level of Significance (α):</strong> The probability of Type I error (rejecting the null hypothesis when it is actually true). Typically set at 0.05 (5%).</li>
+                <li><strong>P-Value:</strong> The probability of obtaining a test result at least as extreme as the one observed, assuming H0 is true. If P-Value < α, we reject H0.</li>
+                <li><strong>Type I Error (α):</strong> Rejecting H0 when it is actually true (a false positive). Example: Concluding a new ad campaign worked, when in reality it didn't.</li>
+                <li><strong>Type II Error (β):</strong> Failing to reject H0 when it is actually false (a false negative). Example: Concluding a new ad campaign failed, when in reality it worked.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>2. METHODS OF HYPOTHESIS TESTING</h2>
+        <p>The general procedure involves five main steps:</p>
+        <ol class="process-step">
+            <li><strong>Formulate H0 and H1:</strong> State the null and alternative hypotheses clearly.</li>
+            <li><strong>Select Appropriate Test:</strong> Choose the correct statistical test (e.g., t-test, Z-test, Chi-Square).</li>
+            <li><strong>Choose Significance Level (α):</strong> Determine the threshold for rejecting H0 (usually 0.05).</li>
+            <li><strong>Calculate Test Statistic:</strong> Compute the statistical value (e.g., t or Z score) using the sample data.</li>
+            <li><strong>Make Decision:</strong> Compare the calculated P-Value to α to decide whether to reject or fail to reject H0.</li>
+        </ol>
+    </div>
+
+    <div class="topic">
+        <h2>3. PARAMETRIC TESTS</h2>
+        <p>A <strong>parametric test</strong> is a statistical test that makes specific assumptions about the population data, such as assuming the data comes from a normal distribution. These tests require continuous data and are considered more statistically powerful.</p>
+        
+        <div class="subsection">
+            <h3>A. Z-Test (One Sample)</h3>
+            <ul>
+                <li><strong>Objective:</strong> To test if the population mean (µ) is significantly different from a hypothesized value (µ0).</li>
+                <li><strong>Use Case:</strong> When the sample size is large (n ≥ 30) or the population standard deviation (σ) is known.</li>
+            </ul>
+        </div>
+        <div class="subsection">
+            <h3>B. t-Test (One Sample)</h3>
+             <ul>
+                <li><strong>Objective:</strong> Same as Z-test, but used when the population standard deviation (σ) is unknown and the sample size is small (n < 30).</li>
+            </ul>
+        </div>
+        <div class="subsection">
+            <h3>C. Independent Samples t-Test (Two Samples)</h3>
+             <ul>
+                <li><strong>Objective:</strong> To determine if the means of two unrelated groups are significantly different.</li>
+                <li><strong>Example:</strong> Is the average satisfaction score of Male customers significantly different from that of Female customers?</li>
+            </ul>
+        </div>
+        <div class="subsection">
+            <h3>D. Paired Samples t-Test (Two Samples)</h3>
+             <ul>
+                <li><strong>Objective:</strong> To determine if the means of two related groups are significantly different. This is used for "before and after" measurements on the same sample.</li>
+                <li><strong>Example:</strong> Did the average willingness-to-buy score significantly increase after the same group of consumers viewed a new product demonstration?</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>4. CHI-SQUARE (X²) ANALYSIS</h2>
+        <p><strong>Chi-Square analysis</strong> is a Non-Parametric Test used for nominal or ordinal data. A non-parametric test does not assume data follows a specific probability distribution, making it "distribution-free."</p>
+        <p>The Chi-Square (X²) test is used to test the <strong>Goodness of Fit</strong> (one-way analysis) and the <strong>Association</strong> or independence (two-way analysis) between two categorical variables. It determines if the observed pattern of frequencies is significantly different from the expected pattern.</p>
+        
+        <div class="subsection">
+            <h3>A. Chi-Square Goodness of Fit (One-Way)</h3>
+            <ul>
+                <li><strong>Objective:</strong> To determine if the observed frequency distribution for a single categorical variable matches a theoretically expected distribution.</li>
+                <li><strong>Example:</strong> We expect 25% of customers to prefer each of four brands (A, B, C, D). Does our actual survey data fit this equal expectation?</li>
+            </ul>
+        </div>
+        <div class="subsection">
+            <h3>B. Chi-Square Test of Association (Two-Way)</h3>
+             <ul>
+                <li><strong>Objective:</strong> To test whether there is a statistically significant association between two categorical variables in a cross-tabulation table.</li>
+                <li><strong>Null Hypothesis (H0):</strong> The two variables are independent (no association).</li>
+                <li><strong>Example:</strong> Is there an association between Region (North, South, East, West) and Product Purchased (Product X, Product Y)?</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>

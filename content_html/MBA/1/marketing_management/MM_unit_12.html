@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIT 12: Marketing of Organizations, Individuals, Places and Ideas</title>
+    <link rel="stylesheet" href="../notes_styles.css">
+</head>
+<body>
+
+<div class="notes-container">
+
+    <h1>UNIT 12: MARKETING OF ORGANIZATIONS, INDIVIDUALS, PLACES AND IDEAS</h1>
+    <p>This unit explores how marketing principles are utilized to promote non-traditional entities such as organizations, individuals, geographical locations, and concepts.</p>
+    <div class="case-study">
+        <p><strong>Contextual Example:</strong> We will use a consistent example: The Solstice Music and Arts Festival. This event is managed by the Global Arts Foundation (GAF), championed by its curator, Dr. Elara Vance, hosted by The City of Harmony, and unified under the core theme of promoting "Local, Sustainable Art and Community Well-being."</p>
+    </div>
+
+    <div class="topic">
+        <h2>1. ORGANIZATION MARKETING</h2>
+        <p><strong>Organization Marketing</strong> consists of activities undertaken to create, maintain, or change attitudes and behavior of target audiences toward an organization. The goal is to build a strong, favorable, and unique brand identity.</p>
+        <div class="example">
+            <p><strong>Example:</strong> Marketing the Global Arts Foundation (GAF), the non-profit organization behind The Solstice Festival.</p>
+        </div>
+        
+        <div class="subsection">
+            <h3>1.1 Image Assessment</h3>
+            <p>This is the process of measuring the organization's current public perception and identifying gaps between the desired and actual image.</p>
+            <div class="example">
+                <p><strong>Example:</strong> The GAF surveys sponsors and finds they are currently viewed as too focused on local projects (Actual Image). Their Desired Image is to be seen as a global curator of international cultural excellence.</p>
+            </div>
+        </div>
+        
+        <div class="subsection">
+            <h3>1.2 Image Planning and Control</h3>
+            <p>The organization develops a strategic plan to bridge the image gap and consistently reinforces the desired image through its actions and communications.</p>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>2. IDEA MARKETING</h2>
+        <p><strong>Idea Marketing</strong> involves marketing social, political, or public interest causes and concepts to change attitudes and behavior for the benefit of society.</p>
+        <div class="example">
+            <p><strong>Example:</strong> The core idea marketed by The Solstice Festival and the GAF is "The promotion of local, sustainable art and mental well-being."</p>
+            <ul>
+                <li><strong>Product:</strong> The societal benefit (a culturally richer, healthier community).</li>
+                <li><strong>Price:</strong> The cost of adoption (e.g., the extra time spent using public transit to the festival).</li>
+                <li><strong>Promotion:</strong> Integrating mental health workshops into the festival schedule.</li>
+                <li><strong>Place:</strong> Setting up "Quiet Zones" and free mental health information booths at the festival.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="topic">
+        <h2>3. PERSON MARKETING</h2>
+        <p><strong>Person Marketing</strong> consists of activities designed to create, maintain, or change attitudes or behavior toward particular people (e.g., politicians, celebrities).</p>
+        <div class="example">
+            <p><strong>Example:</strong> Marketing Dr. Elara Vance, the renowned curator of The Solstice Festival.</p>
+             <ul>
+                <li><strong>Positioning:</strong> Dr. Vance is positioned as the Cultural Thought Leader and Advocate for Artisan Sustainability.</li>
+                <li><strong>Offer:</strong> Her "product" is her influence, vision, and stamp of quality, which validates the festival.</li>
+                <li><strong>Channels:</strong> Publishing op-eds in art journals and giving TED talks. Her personal brand drives ticket sales and donor interest.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="topic">
+        <h2>4. PLACE MARKETING</h2>
+        <p><strong>Place Marketing</strong> involves activities undertaken to create, maintain, or change attitudes and behavior toward particular places (e.g., cities, states, regions). It is crucial for attracting residents, businesses, tourists, and investment.</p>
+        <div class="example">
+            <p><strong>Example:</strong> Marketing The City of Harmony as the permanent home for The Solstice Festival.</p>
+             <ul>
+                <li><strong>Segmentation:</strong> Identifying key target groups (e.g., Affluent Cultural Tourists, Creative Professionals).</li>
+                <li><strong>Positioning:</strong> Positioning the City of Harmony as the "Authentic Hub of Sustainable Culture and Creative Living."</li>
+                <li><strong>Marketing Mix:</strong>
+                    <ul>
+                        <li><strong>Product:</strong> The city's amenities (e.g., historical districts, independent galleries).</li>
+                        <li><strong>Price:</strong> Incentives offered (e.g., tax breaks for creative businesses).</li>
+                        <li><strong>Promotion:</strong> Digital campaigns and partnerships with travel bloggers.</li>
+                        <li><strong>Place/Distribution:</strong> Ensuring direct transport links and curated digital maps for cultural tours.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // This runs IMMEDIATELY when the page loads (IIFE - Immediately Invoked Function Expression)
+    (function() {
+        try {
+            // Access parent's localStorage
+            const parentDarkmode = window.parent.localStorage.getItem('darkmode');
+            
+            // If parent is in dark mode, apply it here too
+            if (parentDarkmode === 'active') {
+                document.body.classList.add('darkmode');
+            }
+        } catch (e) {
+            // Safety net in case we can't access parent
+            console.log('Could not access parent localStorage:', e);
+        }
+    })();
+    // Listen for theme messages from parent window
+    window.addEventListener('message', function(event) {
+        // Security check: verify the message is from the same origin
+        if (event.origin !== window.location.origin) return;
+        
+        // Apply the theme based on the message
+        if (event.data === 'dark') {
+            document.body.classList.add('darkmode');
+        } else if (event.data === 'light') {
+            document.body.classList.remove('darkmode');
+        }
+    }, false);
+</script>
+<script>
+// Add this function
+function adjustIframeHeight() {
+    const contentHeight = document.querySelector('.notes-container').offsetHeight;
+    window.parent.postMessage({ type: 'resize', height: contentHeight }, '*');
+}
+
+// Call it after DOM loads and after theme changes
+document.addEventListener('DOMContentLoaded', adjustIframeHeight);
+window.addEventListener('resize', adjustIframeHeight);
+</script>
+
+</body>
+</html>
