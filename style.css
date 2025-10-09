@@ -1,0 +1,667 @@
+:root{
+--base-color: #ffffff;
+--base-variant: #dddddd;
+--text-color: #000000;
+--secondary-text-color: hsla(0, 1%, 21%, 0.96);
+--shadow: rgba(0, 0, 0, 0.1);
+--accent-color: rgba(132, 92, 92, 0.2);
+--dashboard: rgba(255, 255, 255, 0.8);
+--abstract: rgba(255, 255, 255, 0.271);
+}
+.darkmode{
+--base-color: #000000;
+--base-variant: #1a1a1a;
+--text-color: #ffffff;
+--secondary-text-color: hsl(0, 8%, 90%);
+--shadow: rgba(232, 231, 231, 0.1);
+--accent-color: rgba(255, 255, 255, 0.2);
+--dashboard: rgba(28, 27, 27, 0.775);
+}
+/* BASE STYLES & LAYOUT */
+* {
+    margin:0;
+    padding:0;
+}
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--base-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-tap-highlight-color: transparent; 
+}
+#floatingCanvas {
+    /* Position the canvas fixed to the viewport */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place it behind your main content */
+}
+#content {
+    position: relative;
+    z-index: 1; /* Ensure content is above the canvas */
+    padding: 10px;
+    text-align: center;  
+}
+/* HOME */
+ nav h4{
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem; 
+}
+/* NAVIGATION BAR */
+.nav{
+    background-color: var(--base-color);
+    box-shadow: var(--shadow);
+}
+nav ul{
+    width:100%;
+    list-style:none;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+nav li {
+    height: 50px;
+}
+nav a {
+    height: 100%;
+    padding : 0px 20px 0px 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+nav a:hover {
+    background-color: var(--base-variant);
+}
+nav li:first-child{
+    margin-right: auto;
+}
+nav svg {
+    fill: var(--text-color);
+    transition: fill 0.3s ease;
+}
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 200px;
+    z-index: 999;
+    background-color: var(--dashboard);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.sidebar li{
+    width: 100%;
+    text-align: right;
+    padding-top: 20px;
+}
+.sidebar a{
+    width: 90%;
+    justify-content: flex-end;
+}
+.menu-button{
+    display: none;
+}
+@media (max-width: 800px) {
+    .hideOnMobile {
+        display: none;
+    }
+    .menu-button {
+        display: block;
+    }
+}
+@media (max-width: 500px) {
+    .sidebar{
+        width: 100%;
+    }
+}
+.cta-button {
+    background-color: var(--base-color);
+}
+#theme-switch{
+    cursor: pointer;
+    z-index: 999;
+    height: 60px;
+    width: 60px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    background-color: var(--base-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+#theme-switch:hover {
+    background-color: var(--base-variant);
+}
+#theme-switch svg {
+    fill: var(--text-color);
+    transition: opacity 0.6s ease, transform 0.2s ease;
+    position: absolute;
+}
+
+#theme-switch svg:first-child {
+    opacity: 1;
+}
+
+#theme-switch svg:last-child{
+    opacity: 0;
+}
+
+.darkmode #theme-switch svg:first-child{
+    opacity: 0;
+}
+
+.darkmode #theme-switch svg:last-child{
+    opacity: 1;
+}
+
+/************************************/
+/********** MAIN CONTENT ***********/
+/**********************************/
+main {
+    padding: 20px;
+    max-width: auto;
+    margin: 50px auto 20px auto;
+    position: relative;
+}
+.course-container {
+    padding: 20px;
+    max-width: 500px;
+    margin: 50px auto 20px auto;
+    position: relative;
+}
+.welcome {
+    font-family: 'Anton', sans-serif;
+    font-weight: 100;
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+    margin-bottom: 50px;
+    text-align: center;
+}
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    text-align: center;
+}
+.downloads {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+
+}
+#p {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+/*===============================*/
+/*===== MAIN CALL TO ACTION =====*/
+/*===============================*/
+.cta {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    padding: 10px 0 10px 0;
+    min-width: 210px;
+    margin: 0 auto -30px auto;
+    width: fit-content;
+    border-radius: 10px;
+    border: 2px solid var(--text-color);
+    background-color: var(--base-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: background-color 0.5s ease, color 0.4s ease;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+.cta:hover {
+    background-color: var(--text-color);
+    color: var(--base-color);
+    transform: translateY(-3px) scale(1.05);
+}
+.cta a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px 0 10px 0;
+}
+/*===============================*/
+/*=====LANDING PAGE DESIGN======*/
+/*===============================*/
+.cta-landing-page {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    padding: 10px 0 10px 0;
+    border-radius: 10px;
+    border: 2px solid var(--text-color);
+    background-color: var(--base-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    width: 200px;
+    cursor: pointer;
+    text-decoration: none; 
+}
+.cta-landing-page:hover {
+    background-color: var(--text-color);
+    color: var(--base-color);
+}
+.cta-landing-page a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px 0 10px 0;
+}
+.course-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem; /* Remove gap for full-width cards */
+    padding: 0;
+    scroll-behavior: auto;
+}
+.course-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    flex: 0 0 80vw; /* Full viewport width */
+    min-width: 50vw;
+    scroll-snap-align: start;
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    /*=====================*/
+    /*=====CARD DESIGN=====*/
+    /*=====================*/
+    background-color: var(--base-variant);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    margin: 40px 0 10px 0;
+    position: relative;
+    padding-bottom: 70px;
+}
+.card h2,
+.card p {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #444444;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: #818181;
+    width: 30px;
+    border-radius: 5px;
+}
+.cta, .cta-landing-page, .menu-button a, #theme-switch {
+    -webkit-tap-highlight-color: transparent; 
+}
+/************************************/
+/******* SEMESTER SELECTOR *********/
+/**********(courses.html)**********/
+/*********************************/
+.selector-group { 
+    display: flex;
+    flex-direction: column; 
+    gap: 1rem; 
+    margin-bottom: 1.5rem;
+}
+.selector-item {
+    flex: 1 1 0%;
+}
+.selector-label {
+    display: block;
+    font-size: 0.875rem; 
+    font-weight: 500; 
+    color: #9ca3af; 
+    margin-bottom: 0.25rem; 
+}
+.selector-input { 
+    display: flex;
+    width: 100%; 
+    padding: 0.5rem 1rem; 
+    border-radius: 0.5rem; 
+    font-size: 1rem; 
+    color: var(--text-primary); 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid #444; 
+    background-color: var(--dashboard); 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.selector-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+/*==================================================================*/
+/*=================================================================*/
+/* Responsive Carousel for tablets and desktops (1080p and above) */
+/*===============================================================*/
+/*==============================================================*/
+@media (min-width: 1080px) {
+    .course-cards {
+        overflow-x: visible; /* Disable scrolling */
+        scroll-snap-type: none;
+        gap: 20px; /* Add gap between cards */
+        padding: 20px;
+        justify-content: center;
+    }
+    
+    .card {
+        flex: 1 1 45%; /* Cards take ~45% width each */
+        min-width: 400px;
+        max-width: 500px;
+    }
+    
+    /* Hide carousel dots on desktop */
+    .carousel-dots {
+        display: none;
+    }
+}
+/*==================================================================*/
+/*=================================================================*/
+/* ===================== Carousel for main page ================= */
+/*===============================================================*/
+/*==============================================================*/
+.feature-cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding: 20px 0px 0px 20px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.feature-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.feature-cards .card {
+    flex: 0 0 80vw;
+    min-width: 50vw;
+    scroll-snap-align: start;
+}
+
+.carousel-dots-features {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Responsive for desktop */
+@media (min-width: 1080px) {
+    .feature-cards {
+        overflow-x: visible;
+        scroll-snap-type: none;
+        gap: 20px;
+        padding: 20px 0px 0px 0px 20px;
+    }
+    
+    .feature-cards .card {
+        flex: 1 1 50%; 
+        min-width: 0; 
+        max-width: none;
+    }
+    
+    .carousel-dots-features {
+        display: none;
+    }
+}
+/* Course Content Display */
+.course-content-wrapper {
+    margin-top: 30px;
+}
+
+.course-content-card {
+    text-align: left;
+}
+
+.iframe-container {
+    margin-top: 10px;
+}
+
+.course-iframe {
+    width: 100%;
+    min-height: 600px;
+    border: 2px solid var(--base-variant);
+    border-radius: 8px;
+    background-color: var(--base-color);
+    transition: background-color 0.3s ease;
+}
+/*=========================================================*/
+/*================ Download Button Style ==================*/
+/*========================================================*/
+.download-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    background-color: var(--text-color);
+    color: var(--base-color);
+    border: 2px solid var(--text-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;  
+}
+
+.download-button:hover {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+/* --- New Downloads Section Styles --- */
+
+.downloads-container {
+    padding: 30px 20px;
+    min-height: 50vh; /* Ensure some height for content */
+}
+
+.controls-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    position: relative; /* Added to anchor the absolute positioned back button when disabled */
+    min-height: 48px; /* Ensures the header doesn't collapse */
+}
+
+/* Class to center content when only the title is visible */
+.controls-header.center-mode {
+    justify-content: center;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: var(--base-variant);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.back-button:hover {
+    background-color: var(--accent-color);
+}
+
+.back-button:disabled {
+    opacity: 0;
+    pointer-events: none;
+    /* Absolute positioning removes the button from the flex flow, allowing the title to truly center */
+    position: absolute; 
+    left: 0; /* Keep it aligned to the left of its container */
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.selection-card {
+    background-color: var(--dashboard);
+    border: 1px solid var(--base-variant);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.selection-card:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px var(--shadow);
+}
+
+.subject-details {
+    background-color: var(--dashboard);
+    border: 1px solid var(--base-variant);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+}
+
+/* Removed .subject-header-row styles as the Download All button is now global */
+/* NEW: Styling for the global download all button placed below the H2/P */
+.global-download-all-btn {
+    margin: 15px auto 25px auto; /* Margin top/bottom, auto margin-left for right alignment */
+    padding: 10px 20px; 
+    font-size: 0.95rem; 
+    width: fit-content;
+    max-width: 250px; 
+    justify-content: right;
+    /* display: none; will be set in the JS updateControls function */
+}
+
+/* Inherit download-button hover fill for SVG */
+.global-download-all-btn svg {
+    fill: var(--base-color);
+}
+.global-download-all-btn:hover svg {
+    fill: var(--text-color);
+}
+
+.unit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.unit-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: var(--base-color);
+    border: 1px solid var(--base-variant);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.unit-link:hover {
+    background-color: var(--base-variant);
+}
+
+.download-icon {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    .downloads-container {
+        padding: 20px 10px;
+    }
+    .selection-card {
+        font-size: 1.1rem;
+    }
+    /* Adjust global button alignment for mobile */
+    .global-download-all-btn {
+        margin: 15px auto 25px auto; 
+        width: 100%; 
+        justify-content: center;
+    }
+}
