@@ -1,7 +1,7 @@
 <div id="wip-overlay" class="wip-overlay hidden">
     <div class="wip-content">
         <h1><span class="wrench-icon">🛠️</span> Work in Progress</h1>
-        <p>The Scrolls Are Still Being Transcribed. Our Scribes work swiftly!</p><br><br>
+        <p>The Scrolls Are Still Being Transcribed. Our Scribes work swiftly!</p>
         <button id="close-wip-btn">Got It!</button>
     </div>
 </div>
@@ -41,15 +41,15 @@
     border-radius: 8px;
     width: 450px; /* Fixed, professional size */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    border: 4px solid #f0ad4e;
+    border: 4px solid #c1c1c1;
     text-align: center; 
 }
 .wip-content h1 {
-    color: #f0ad4e; /* Blue header */
+    color: #f9f9f9; /* Blue header */
     font-size: 2em;
 }
 #close-wip-btn {
-    background-color: #f0ad4e; /* Solid blue button */
+    background-color: #bdbdbd; /* Solid blue button */
     padding: 12px 30px;
     font-size: 1.5em;
     width: 200px;
@@ -64,11 +64,11 @@
         color: #ffffff; /* White text for contrast */
         padding: 60px 80px; /* More padding */
         width: 650px; /* Wider box for tablet landscape */
-        border: 4px solid #f0ad4e; /* Caution/Yellow border */
+        border: 4px solid #606060; /* Caution/Yellow border */
         text-align: center;
     }
     .wip-content h1 {
-        color: #f0ad4e; /* Yellow header */
+        color: #ffffff; /* Yellow header */
         font-size: 2.2em;
         line-height: 2.5em; /* More spacing for readability */
     }
@@ -89,14 +89,14 @@
 @media (max-width: 600px) {
     .wip-content {
         background-color: #333333; /* Very dark background */
-        color: #a9a7a7;
+        color: #ffffff;
         padding: 50px 35px;
         width: 90%; /* Box takes up most of the screen */
-        border: 4px solid #f0ad4e; /* Red border */
+        border: 4px solid #606060; /* Red border */
         text-align: center;
     }
     .wip-content h1 {
-        color: #f0ad4e; /* Red header */
+        color: #ffffff; /* Red header */
         font-size: 2.5em; /* Largest font size for readability */
     }
     .wrench-icon {
@@ -123,9 +123,9 @@
     }
 
     // UPDATED FUNCTION: Redirection instead of just hiding
-    function redirectToIndex() {
-        // This command tells the browser to navigate to the specified URL
-        window.location.href = 'index.html';
+    function goBack() {
+        // This command tells the browser to go back one step in its history.
+        window.history.back();
         
         // Note: You don't need to explicitly hide the overlay here,
         // as the browser will immediately load the new page.
@@ -136,6 +136,6 @@
     displayWIPOverlay();
 
     // 4. Attach the NEW redirection function to the close button
-    closeBtn.addEventListener('click', redirectToIndex);
+    closeBtn.addEventListener('click', goBack);
 });
 </script>
