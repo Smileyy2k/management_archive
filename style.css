@@ -20,31 +20,79 @@
 }
   /* Apply the variables to the logo image */
 .logo {
-    filter: invert(0%); /* Default for light mode */
-    transition: filter 0.3s ease;
-    vertical-align: middle; 
+    height: 40px; 
+    width: 40px; 
+    background-image: url('resources/main_logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
 }
 .darkmode .logo {
-    filter: invert(100%); /* Invert for dark mode */
+    background-image: url('resources/main_logo_dark.png');
+}
+.logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
 }
 /* --- Responsive Logo Sizing --- */
-
+/* Mobile/Small Screens */
+@media (min-width: 320px) {
+    .logo {
+        height: 40px;
+        width: 40px;
+        transform: scale(1.05);
+        margin-top: 5px;
+        margin-left: 5px; 
+    }
+    .logo-link {
+        height: 100px;
+        width: 100px;
+    }
+}
 /* Tablet/Medium Screens */
-@media (min-width: 600px) {
+@media (min-width: 375px) {
     .logo {
         height: 45px;
         width: 45px;
-        /* Slightly more prominent on medium screens */
-        transform: scale(1.05); 
+        transform: scale(1.05);
+        margin-top: 5px;
+        margin-left: 5px; 
+    }
+    .logo-link {
+        height: 100px;
+        width: 100px;
+    }
+}
+@media (min-width: 425px) {
+    .logo {
+        height: 50px;
+        width: 50px;
+        transform: scale(1.05);
+        margin-top: 5px;
+        margin-left: 5px; 
+    }
+    .logo-link {
+        height: 100px;
+        width: 100px;
     }
 }
 /* Desktop/Large Screens */
 @media (min-width: 1080px) {
     .logo {
-        height: 55px; 
-        width: 55px; 
-        margin-left: 10px; 
+        height: 65px; /* Larger logo */
+        width: 65px; 
+        margin-left: 10px;
+        margin-top: 20px; 
     }
+    .logo-link {
+        height: 100px; /* Adjust to match the new nav li height */
+        width: 100px;
+    }
+    /* Update nav li height to match other responsive rules */
     nav li {
         height: 60px; 
     }
@@ -204,7 +252,6 @@ nav svg {
 .darkmode #theme-switch svg:last-child{
     opacity: 1;
 }
-
 /************************************/
 /********** MAIN CONTENT ***********/
 /**********************************/
@@ -212,6 +259,12 @@ main {
     padding: 20px;
     max-width: auto;
     margin: 50px auto 20px auto;
+    position: relative;
+}
+.landing-page {
+    padding: 20px;
+    max-width: auto;
+    margin: 50px 0 0 0;
     position: relative;
 }
 .course-container {
@@ -329,13 +382,14 @@ h2 {
     gap: 1rem; /* Remove gap for full-width cards */
     padding: 0;
     scroll-behavior: auto;
+    margin: -80px 0 20px 0;
 }
 .course-cards::-webkit-scrollbar {
     display: none;
 }
 
 .card {
-    flex: 0 0 80vw; /* Full viewport width */
+    flex: 0 0 90vw; /* Full viewport width */
     min-width: 50vw;
     scroll-snap-align: start;
     overflow: hidden;
@@ -345,11 +399,11 @@ h2 {
     /*=====CARD DESIGN=====*/
     /*=====================*/
     background-color: var(--base-variant);
-    padding: 20px;
+    padding: 50px;
     border-radius: 10px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease;
-    margin: 40px 0 10px 0;
+    margin: 50px 0 10px 0;
     position: relative;
     padding-bottom: 70px;
 }
@@ -362,7 +416,7 @@ h2 {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin: 10px;
 }
 
 .dot {
@@ -371,6 +425,7 @@ h2 {
     border-radius: 50%;
     background: #444444;
     transition: background 0.3s;
+    z-index: 10;
 }
 
 .dot.active {
@@ -455,31 +510,44 @@ h2 {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 10px;
-    padding: 20px 0px 0px 20px;
+    padding: 0px 0px 0px 20px;
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    position: relative;
+    translate: 0px -60px 0px;
 }
-
 .feature-cards::-webkit-scrollbar {
     display: none;
 }
-
 .feature-cards .card {
     flex: 0 0 80vw;
     min-width: 50vw;
     scroll-snap-align: start;
+    padding-bottom: 70px;
+    padding-top: 50px;
 }
-
+.carousel-dots-container {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 0;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+    translate: 0px 20px 0px;
+}
 .carousel-dots-features {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: auto;
 }
-
 /* Responsive for desktop */
-@media (min-width: 1080px) {
+@media (min-width: 1024px) {
     .feature-cards {
         overflow-x: visible;
         scroll-snap-type: none;
@@ -492,7 +560,9 @@ h2 {
         min-width: 0; 
         max-width: none;
     }
-    
+    .carousel-dots-container {
+        display: none;
+    }
     .carousel-dots-features {
         display: none;
     }
